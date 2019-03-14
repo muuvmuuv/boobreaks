@@ -90,13 +90,6 @@ const Breakpoint = {
   },
 
   /**
-   * Returns true if currently active breakpoint matches the expression
-   */
-  _isAnyActive(breakpoints) {
-    return breakpoints.find(alias => this.current() === alias)
-  },
-
-  /**
    * Determines whether current breakpoint matches the expression given
    */
   _isMatchingExpression(str) {
@@ -142,7 +135,7 @@ const Breakpoint = {
 
       const acceptedBreakpoints = breakpointList.slice(start, end)
 
-      return this._isAnyActive(acceptedBreakpoints)
+      return acceptedBreakpoints.includes(this.current())
     }
   },
 }
