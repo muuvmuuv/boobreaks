@@ -1,8 +1,9 @@
 const path = require('path')
 const gulp = require('gulp')
+const chalk = require('chalk')
 const babel = require('gulp-babel')
 const minify = require('gulp-minify')
-const rename = require('gulp-rename')
+const eslint = require('gulp-eslint')
 const clean = require('gulp-clean')
 const sourcemaps = require('gulp-sourcemaps')
 
@@ -31,17 +32,46 @@ gulp.task('script', () => {
     .pipe(gulp.dest(DEST))
 })
 
+gulp.task('lint', function() {
+  return gulp
+    .src(FILE)
+    .pipe(eslint())
+    .pipe(
+      eslint.result(result => {
+        console.log() // EMPTY
+        console.log(chalk.gray(result.filePath))
+        console.log('─'.repeat(30))
+        console.log(chalk.yellow('Warnings:'), result.warningCount)
+        console.log(chalk.red('Errors:'), result.errorCount)
+        console.log(chalk.blue('Messages:'), result.messages.length)
+        console.log('─'.repeat(30))
+        if (result.messages.length > 0) {
+          // console.log(result.messages)
+          result.messages.forEach(m => {
+            console.log(
+              `[${m.severity}:${m.line}:${m.column}]`.padEnd(8),
+              `(${m.ruleId})`.padEnd(8),
+              `=> ${m.message}`
+            )
+          })
+        }
+        console.log() // EMPTY
+      })
+    )
+    .pipe(eslint.failAfterError())
+})
+
 gulp.task('clean', () => {
   return gulp.src(DEST, { read: false, allowEmpty: true }).pipe(clean())
 })
 
 gulp.task(
   'watch',
-  gulp.series('clean', 'script', () => {
+  gulp.series('lint', 'clean', 'script', () => {
     const watchThis = `${SRC}/*.js`
     console.log('Watching:', watchThis)
     return gulp.watch(watchThis, gulp.series('script'))
   })
 )
 
-gulp.task('default', gulp.series('clean', 'script'))
+gulp.task('default', gulp.series('lint', 'clean', 'script'))
