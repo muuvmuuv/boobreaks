@@ -32,7 +32,7 @@ gulp.task('script', () => {
     .pipe(gulp.dest(DEST))
 })
 
-gulp.task('lint', function() {
+gulp.task('lint', () => {
   return gulp
     .src(FILE)
     .pipe(eslint())
