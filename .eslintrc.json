@@ -1,0 +1,21 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "amd": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 9,
+    "sourceType": "module"
+  },
+  "globals": {
+    "$": true,
+    "jQuery": true
+  },
+  "plugins": ["prettier", "jest"],
+  "extends": ["eslint:recommended", "plugin:jest/recommended", "prettier"],
+  "rules": {
+    "no-console": "off"
+  }
+}

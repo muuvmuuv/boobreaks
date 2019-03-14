@@ -1,0 +1,56 @@
+{
+  "name": "boobreaks",
+  "version": "2.3.0",
+  "description": "Use Bootstraps breakpoints inside your JavaScript!",
+  "homepage": "https://github.com/muuvmuuv/boobreaks",
+  "bugs": "https://github.com/muuvmuuv/boobreaks/issues",
+  "repository": "git@github.com:muuvmuuv/boobreaks.git",
+  "license": "MIT",
+  "author": {
+    "name": "Marvin Heilemann",
+    "email": "marvin.heilemann+github@googlemail.com",
+    "url": "https://marvin.digital/"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "main": "src/breakpoint.js",
+  "scripts": {
+    "build": "gulp",
+    "dev": "gulp watch",
+    "jest": "jest",
+    "prepare": "npm run build",
+    "pretty": "pretty-quick",
+    "start": "npm run dev"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "run-s pretty build"
+    }
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "husky": "^1.3.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.16.4",
+    "pretty-quick": "^1.10.0"
+  },
+  "engines": {
+    "node": ">=10.15.1",
+    "npm": ">=6.5.1"
+  },
+  "unpkg": "dist/breakpoint.min.js"
+}
