@@ -90,17 +90,6 @@ var Breakpoint = {
   },
 
   /**
-   * Returns true if currently active breakpoint matches the expression
-   */
-  _isAnyActive: function _isAnyActive(breakpoints) {
-    var _this = this;
-
-    return breakpoints.find(function (alias) {
-      return _this.current() === alias;
-    });
-  },
-
-  /**
    * Determines whether current breakpoint matches the expression given
    */
   _isMatchingExpression: function _isMatchingExpression(str) {
@@ -145,7 +134,7 @@ var Breakpoint = {
       }
 
       var acceptedBreakpoints = breakpointList.slice(start, end);
-      return this._isAnyActive(acceptedBreakpoints);
+      return acceptedBreakpoints.includes(this.current());
     }
   }
 };
