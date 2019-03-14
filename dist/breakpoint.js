@@ -95,7 +95,7 @@ var Breakpoint = {
   _isAnyActive: function _isAnyActive(breakpoints) {
     var _this = this;
 
-    breakpoints.find(function (alias) {
+    return breakpoints.find(function (alias) {
       return _this.current() === alias;
     });
   },

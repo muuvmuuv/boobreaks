@@ -93,7 +93,7 @@ const Breakpoint = {
    * Returns true if currently active breakpoint matches the expression
    */
   _isAnyActive(breakpoints) {
-    breakpoints.find(alias => this.current() === alias)
+    return breakpoints.find(alias => this.current() === alias)
   },
 
   /**
