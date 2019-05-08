@@ -2,8 +2,8 @@
 
 [Demo](https://muuvmuuv.github.io/boobreaks/)
 
-A simple and small (782B) utility to make [Bootstraps breakpoints][1] available in
-your JavaScript files.
+A simple and small (782B JavaScript and 131B CSS) utility to make [Bootstraps
+breakpoints][1] available in your JavaScript files.
 
 ## Installation
 
@@ -14,7 +14,7 @@ $ npm install boobreaks
 ## How to use
 
 First you need to install [Bootstrap](https://getbootstrap.com/) on your site and
-then add either the SCSS yourself or load the CSS file.
+then add either the SCSS yourself or load the CSS (recommend) file.
 
 ### SCSS
 
