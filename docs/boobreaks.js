@@ -5,7 +5,7 @@
  * Copyright 2019 Marvin Heilemann
  * Released under the MIT license
  *
- * Date: 2019-05-08T11:39:17.403Z
+ * Date: 08.05.2019
  */
 !(function(e, t) {
   'object' == typeof exports && 'undefined' != typeof module
@@ -17,11 +17,14 @@
   'use strict'
   return class {
     constructor(e) {
-      ;(this.vars = {
-        breakpoints: ['xs', 'sm', 'md', 'lg', 'xl'],
-        widths: [null, 576, 768, 992, 1200],
-      }),
-        (this.vars = Object.assign({}, this.vars, e))
+      this.vars = Object.assign(
+        {},
+        {
+          breakpoints: ['xs', 'sm', 'md', 'lg', 'xl'],
+          widths: [null, 576, 768, 992, 1200],
+        },
+        e
+      )
     }
     current() {
       const e = document.querySelector('body')
@@ -57,11 +60,11 @@
       let s = r.indexOf(t.breakpointName)
       if (-1 !== s) {
         let e = 0,
-          i = 0
+          o = 0
         return (
-          '<' === t.operator && ((e = 0), (i = t.orEqual ? ++s : s)),
-          '>' === t.operator && ((e = t.orEqual ? s : ++s), (i = void 0)),
-          r.slice(e, i).includes(this.current())
+          '<' === t.operator && ((e = 0), (o = t.orEqual ? ++s : s)),
+          '>' === t.operator && ((e = t.orEqual ? s : ++s), (o = void 0)),
+          r.slice(e, o).includes(this.current())
         )
       }
     }
