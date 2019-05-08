@@ -18,12 +18,12 @@ export interface IBoobreaksVars {
  *
  * @see https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss#L191-L197
  */
-const BoobreaksVars: IBoobreaksVars = {
+export const BoobreaksVars: IBoobreaksVars = {
   breakpoints: ['xs', 'sm', 'md', 'lg', 'xl'],
   widths: [null, 576, 768, 992, 1200],
 }
 
-class Boobreaks {
+export default class Boobreaks {
   private vars: IBoobreaksVars
 
   constructor(vars: IBoobreaksVars) {
@@ -151,5 +151,3 @@ class Boobreaks {
     return undefined
   }
 }
-
-export default Boobreaks
