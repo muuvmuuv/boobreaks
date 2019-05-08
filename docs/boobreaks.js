@@ -1,11 +1,11 @@
 /*!
- * Boobreaks v2.4.0
+ * Boobreaks v3.0.1
  * https://github.com/muuvmuuv/boobreaks
  *
  * Copyright 2019 Marvin Heilemann
  * Released under the MIT license
  *
- * Date: 2019-05-08T07:40:36.592Z
+ * Date: 2019-05-08T08:31:20.646Z
  */
 !(function(e, t) {
   'object' == typeof exports && 'undefined' != typeof module

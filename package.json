@@ -1,7 +1,12 @@
 {
   "name": "boobreaks",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Use Bootstraps breakpoints inside your JavaScript!",
+  "keywords": [
+    "bootstrap",
+    "breakpoints",
+    "utility"
+  ],
   "homepage": "https://github.com/muuvmuuv/boobreaks",
   "bugs": "https://github.com/muuvmuuv/boobreaks/issues",
   "repository": "git@github.com:muuvmuuv/boobreaks.git",
