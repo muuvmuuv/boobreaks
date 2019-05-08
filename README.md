@@ -1,7 +1,9 @@
-# Boobreaks
+# Boobreaks 📏
 
-A utility to make [Bootstraps breakpoints][1] available in your JavaScript
-files.
+[Demo](https://muuvmuuv.github.io/boobreaks/)
+
+A simple and small (782B) utility to make [Bootstraps breakpoints][1] available in
+your JavaScript files.
 
 ## Installation
 
@@ -9,13 +11,18 @@ files.
 $ npm install boobreaks
 ```
 
-## Usage
+## How to use
 
-First you need to install [Bootstrap](https://getbootstrap.com/) on your site
-and then add the below snippet somewhere in your [SCSS](https://sass-lang.com/)
-files.
+First you need to install [Bootstrap](https://getbootstrap.com/) on your site and
+then add either the SCSS yourself or load the CSS file.
+
+### SCSS
 
 ```scss
+@import '../node_modules/bootstrap/scss/functions';
+@import '../node_modules/bootstrap/scss/mixins';
+@import '../node_modules/bootstrap/scss/variables';
+
 body {
   &::before {
     content: 'xs';
@@ -32,22 +39,26 @@ body {
 }
 ```
 
-## Development
+### CSS (recommend)
 
-```bash
-$ npm install
-$ npm start
+```css
+@import 'boobreaks/dist/boobreaks.css';
 ```
 
-## Production
+### JavaScript
 
-```bash
-$ npm run build
+```js
+import Boobreaks from 'boobreaks'
+
+console.log(`Breakpoint is at`, Boobreaks.current(), Boobreaks.width())
 ```
 
-## Todo
+## Available functions
 
-- [] Add testing
-- [] Add badges
+| Function    | Params   | Return   | Description                                             |
+| ----------- | -------- | -------- | ------------------------------------------------------- |
+| `current()` | /        | `string` | Current breakpoint alias.                               |
+| `width()`   | /        | `number` | Current screen width by alias.                          |
+| `is()`      | `string` | `string` | If the current screen matches the pattern, e.g.: `>=sm` |
 
 [1]: https://getbootstrap.com/docs/4.3/layout/overview/#responsive-breakpoints

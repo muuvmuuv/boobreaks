@@ -1,6 +1,6 @@
 {
   "name": "boobreaks",
-  "version": "2.3.2",
+  "version": "3.0.0",
   "description": "Use Bootstraps breakpoints inside your JavaScript!",
   "homepage": "https://github.com/muuvmuuv/boobreaks",
   "bugs": "https://github.com/muuvmuuv/boobreaks/issues",
@@ -11,22 +11,17 @@
     "email": "marvin.heilemann+github@googlemail.com",
     "url": "https://marvin.digital/"
   },
-  "files": [
-    "src",
-    "dist"
-  ],
-  "main": "src/breakpoint.js",
+  "main": "./dist/breakpoint.js",
   "scripts": {
-    "build": "gulp",
-    "dev": "gulp watch",
-    "jest": "jest",
-    "prepare": "npm run build",
+    "build": "rollup -cm",
+    "open": "open ./docs/index.html",
+    "prepublishOnly": "npm run build",
     "pretty": "pretty-quick",
-    "start": "npm run dev"
+    "start": "rollup -cmw"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "run-s pretty build"
+      "pre-commit": "pretty-quick --staged"
     }
   },
   "dependencies": {
@@ -35,28 +30,23 @@
     "popper.js": "^1.14.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
-    "eslint": "^5.15.1",
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-jest": "^22.3.2",
-    "eslint-plugin-prettier": "^3.0.1",
-    "gulp": "^4.0.0",
-    "gulp-babel": "^8.0.0",
-    "gulp-clean": "^0.4.0",
-    "gulp-eslint": "^5.0.0",
-    "gulp-minify": "^3.1.0",
-    "gulp-rename": "^1.4.0",
-    "gulp-sourcemaps": "^2.6.5",
-    "husky": "^1.3.1",
-    "jest": "^24.5.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^1.16.4",
-    "pretty-quick": "^1.10.0"
-  },
-  "engines": {
-    "node": ">=10.15.1",
-    "npm": ">=6.5.1"
-  },
-  "unpkg": "dist/breakpoint.min.js"
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@types/node": "^11.13.10",
+    "change-case": "^3.1.0",
+    "create-banner": "^1.0.0",
+    "husky": "^2.2.0",
+    "prettier": "^1.17.0",
+    "pretty-quick": "^1.10.0",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.11.3",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-scss": "^1.0.1",
+    "rollup-plugin-terser": "^4.0.4",
+    "rollup-plugin-typescript": "^1.0.1",
+    "rollup-watch": "^4.3.1",
+    "sass": "^1.20.1",
+    "tslib": "^1.9.3",
+    "typescript": "^3.4.5"
+  }
 }

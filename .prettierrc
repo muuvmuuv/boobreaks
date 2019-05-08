@@ -1,7 +1,20 @@
 {
-  "trailingComma": "es5",
+  "printWidth": 85,
+  "tabWidth": 2,
+  "useTabs": false,
   "semi": false,
   "singleQuote": true,
+  "trailingComma": "es5",
+  "bracketSpacing": true,
   "proseWrap": "always",
-  "endOfLine": "lf"
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "semi": true,
+        "singleQuote": false,
+        "printWidth": 9999
+      }
+    }
+  ]
 }

@@ -1,0 +1,18 @@
+@import '../node_modules/bootstrap/scss/functions';
+@import '../node_modules/bootstrap/scss/mixins';
+@import '../node_modules/bootstrap/scss/variables';
+
+body {
+  &::before {
+    content: 'xs';
+    display: none;
+  }
+
+  @each $breakpoint, $breakpoint-width in $grid-breakpoints {
+    @include media-breakpoint-up($breakpoint) {
+      &::before {
+        content: '#{$breakpoint}';
+      }
+    }
+  }
+}

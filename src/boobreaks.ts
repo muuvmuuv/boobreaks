@@ -1,68 +1,78 @@
-/**
- * Use Bootstrap breakpoints inside you JavaScript!
- *
- * Originally created by Maciej Gurban
- * https://github.com/maciej-gurban/responsive-bootstrap-toolkit
- *
- * @author Marvin Heilemann
- * @license MIT
- * @see https://getbootstrap.com/docs/4.3/layout/overview/#responsive-breakpoints
- */
+import './boobreaks.scss'
 
-const Breakpoint = {
+export type XS = 'xs'
+export type SM = 'sm'
+export type MD = 'md'
+export type LG = 'lg'
+export type XL = 'xl'
+export type ALIAS = XS | SM | MD | LG | XL
+export type UN = 'unrecognized'
+
+export interface IBoobreaksVars {
+  breakpoints: string[]
+  widths: (number | null)[]
+}
+
+/**
+ * Default bootstrap values.
+ *
+ * @see https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss#L191-L197
+ */
+const BoobreaksVars: IBoobreaksVars = {
   breakpoints: ['xs', 'sm', 'md', 'lg', 'xl'],
   widths: [null, 576, 768, 992, 1200],
+}
+
+class Boobreaks {
+  private vars: IBoobreaksVars
+
+  constructor(vars: IBoobreaksVars) {
+    this.vars = { ...BoobreaksVars, ...vars }
+  }
 
   /**
    * Returns current breakpoint alias.
-   *
-   * @example Breakpoint.current()
-   * @return {string} xs|sm|md|lg|xl
    */
-  current() {
-    return (
-      window
-        .getComputedStyle(document.querySelector('body'), ':before')
+  current(): ALIAS | UN {
+    const body = document.querySelector('body')
+    if (!body) throw new Error('No `body` found!')
+    return <ALIAS>window
+        .getComputedStyle(body, ':before')
         .getPropertyValue('content')
         .replace(/"/g, '') || 'unrecognized'
-    )
-  },
+  }
 
   /**
    * Returns current breakpoint size.
-   *
-   * @example Breakpoint.width()
-   * @return {boolean} null|576|768|992|1200
    */
-  width() {
-    return this.widths[this.breakpoints.indexOf(this.current().toLowerCase())]
-  },
+  width(): number | null {
+    return this.vars.widths[
+      this.vars.breakpoints.indexOf(this.current().toLowerCase())
+    ]
+  }
 
   /**
    * Returns true if current breakpoint matches passed glob.
-   *
-   * @example Breakpoint.is('<=md')
-   * @return {boolean} true|false
    */
-  is(str) {
-    if (this._isAnExpression(str)) {
-      return this._isMatchingExpression(str)
+  is(str: string): boolean {
+    if (this.isAnExpression(str)) {
+      return this.isMatchingExpression(str) || false
     }
 
     return this.current() === str
-  },
+  }
 
   /**
    * Determines whether passed string is a parsable expression
    */
-  _isAnExpression(str) {
+  private isAnExpression(str: string): boolean {
     return str.charAt(0) === '<' || str.charAt(0) === '>'
-  },
+  }
 
   /**
    * Splits the expression into <,> and = alias
    */
-  _splitExpression(str) {
+  private splitExpression(str: string) {
     // Used operator
     const operator = str.charAt(0)
     // Includes breakpoint equal to alias?
@@ -87,24 +97,24 @@ const Breakpoint = {
       orEqual,
       breakpointName,
     }
-  },
+  }
 
   /**
    * Determines whether current breakpoint matches the expression given
    */
-  _isMatchingExpression(str) {
-    const expression = this._splitExpression(str)
+  private isMatchingExpression(str: string): boolean | undefined {
+    const expression = this.splitExpression(str)
 
     // Cache breakpoint names
-    const breakpointList = this.breakpoints
+    const breakpointList = this.vars.breakpoints
 
     // Get index of sought breakpoint in the list
     let pos = breakpointList.indexOf(expression.breakpointName)
 
     // Breakpoint found
     if (pos !== -1) {
-      let start = 0
-      let end = 0
+      let start: number | undefined = 0
+      let end: number | undefined = 0
 
       /**
        * Parsing viewport.is('<=md') we interate from smallest breakpoint ('xs') and end
@@ -137,7 +147,9 @@ const Breakpoint = {
 
       return acceptedBreakpoints.includes(this.current())
     }
-  },
+
+    return undefined
+  }
 }
 
-export default Breakpoint
+export default Boobreaks
