@@ -1,4 +1,4 @@
-import './boobreaks.scss'
+import './style.scss'
 
 export type XS = 'xs'
 export type SM = 'sm'
@@ -13,21 +13,21 @@ export interface IBoobreaksVars {
   widths: (number | null)[]
 }
 
-/**
- * Default bootstrap values.
- *
- * @see https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss#L191-L197
- */
-export const BoobreaksVars: IBoobreaksVars = {
-  breakpoints: ['xs', 'sm', 'md', 'lg', 'xl'],
-  widths: [null, 576, 768, 992, 1200],
-}
-
 export default class Boobreaks {
+  /**
+   * Default bootstrap values.
+   *
+   * @see https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss#L191-L197
+   */
   private vars: IBoobreaksVars
 
   constructor(vars: IBoobreaksVars) {
-    this.vars = { ...BoobreaksVars, ...vars }
+    const defaults = {
+      breakpoints: ['xs', 'sm', 'md', 'lg', 'xl'],
+      widths: [null, 576, 768, 992, 1200],
+    }
+
+    this.vars = { ...defaults, ...vars }
   }
 
   /**

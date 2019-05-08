@@ -16,10 +16,11 @@
     "email": "marvin.heilemann+github@googlemail.com",
     "url": "https://marvin.digital/"
   },
-  "main": "./dist/breakpoint.js",
+  "main": "dist/boobreaks.common.js",
+  "module": "dist/boobreaks.esm.js",
   "scripts": {
     "build": "rollup -cm",
-    "open": "open ./docs/index.html",
+    "open": "open docs/index.html",
     "prepublishOnly": "npm run build",
     "pretty": "pretty-quick",
     "start": "rollup -cmw"

@@ -15,7 +15,7 @@ const banner = createBanner({
 })
 
 module.exports = {
-  input: `src/${pkg.name}.ts`,
+  input: 'src/index.ts',
   output: [
     {
       banner,

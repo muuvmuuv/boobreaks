@@ -1,11 +1,11 @@
 /*!
- * Boobreaks v3.0.1
+ * Boobreaks v3.2.0
  * https://github.com/muuvmuuv/boobreaks
  *
  * Copyright 2019 Marvin Heilemann
  * Released under the MIT license
  *
- * Date: 2019-05-08T08:31:20.646Z
+ * Date: 2019-05-08T11:39:17.403Z
  */
 !(function(e, t) {
   'object' == typeof exports && 'undefined' != typeof module
@@ -15,13 +15,13 @@
     : ((e = e || self).Boobreaks = t())
 })(this, function() {
   'use strict'
-  const e = {
-    breakpoints: ['xs', 'sm', 'md', 'lg', 'xl'],
-    widths: [null, 576, 768, 992, 1200],
-  }
   return class {
-    constructor(t) {
-      this.vars = Object.assign({}, e, t)
+    constructor(e) {
+      ;(this.vars = {
+        breakpoints: ['xs', 'sm', 'md', 'lg', 'xl'],
+        widths: [null, 576, 768, 992, 1200],
+      }),
+        (this.vars = Object.assign({}, this.vars, e))
     }
     current() {
       const e = document.querySelector('body')
@@ -57,11 +57,11 @@
       let s = r.indexOf(t.breakpointName)
       if (-1 !== s) {
         let e = 0,
-          o = 0
+          i = 0
         return (
-          '<' === t.operator && ((e = 0), (o = t.orEqual ? ++s : s)),
-          '>' === t.operator && ((e = t.orEqual ? s : ++s), (o = void 0)),
-          r.slice(e, o).includes(this.current())
+          '<' === t.operator && ((e = 0), (i = t.orEqual ? ++s : s)),
+          '>' === t.operator && ((e = t.orEqual ? s : ++s), (i = void 0)),
+          r.slice(e, i).includes(this.current())
         )
       }
     }
