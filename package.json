@@ -1,6 +1,6 @@
 {
   "name": "boobreaks",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Use Bootstraps breakpoints inside your JavaScript!",
   "keywords": [
     "bootstrap",
@@ -28,6 +28,7 @@
     "watch": "microbundle watch --name Boobreaks",
     "build-docs": "microbundle -f umd -o docs --name Boobreaks",
     "watch-docs": "microbundle watch -f umd -o docs --name Boobreaks",
+    "prepublishOnly": "npm run build",
     "serve": "serve docs"
   },
   "dependencies": {
