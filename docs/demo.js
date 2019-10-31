@@ -1,28 +1,38 @@
 window.onload = () => {
-  const Breakpoint = new Boobreaks({
-    /* options */
-  })
+  window.onresize = () => testWindow()
+  testWindow()
 
-  test()
-  window.onresize = () => test()
-
-  function test() {
-    contextLog('current', null, Breakpoint.current())
-    contextLog('width', null, Breakpoint.width())
-    contextLog('is', '&lt;xs', Breakpoint.is('<xs'))
-    contextLog('is', '&gt;xs', Breakpoint.is('>xs'))
-    contextLog('is', '&gt;=md', Breakpoint.is('>=md'))
-    contextLog('is', 'lg', Breakpoint.is('lg'))
+  function testWindow() {
+    // console.clear()
+    update('current', 'current', null, Boobreaks.current())
+    update('width', 'width', null, Boobreaks.width())
+    update('is1', 'is', '<xs', Boobreaks.is('<xs'))
+    update('is2', 'is', '<=xs', Boobreaks.is('<=xs'))
+    update('is3', 'is', '>xs', Boobreaks.is('>xs'))
+    update('is4', 'is', '>=md', Boobreaks.is('>=md'))
+    update('is5', 'is', '<md', Boobreaks.is('<md'))
+    update('is6', 'is', 'lg', Boobreaks.is('lg'))
+    update('is7', 'is', '<lg', Boobreaks.is('<lg'))
+    update('is8', 'is', '<xl', Boobreaks.is('<xl'))
+    update('is9', 'is', 'xl', Boobreaks.is('xl'))
+    update('is10', 'is', '>xl', Boobreaks.is('>xl'))
+    update('is11', 'is', '>=xl', Boobreaks.is('>=xl'))
   }
 
-  function contextLog(func, param, result) {
-    const log = document.querySelector('.log tbody')
-    console.log(func, param, result)
-    log.innerHTML =
-      `<tr>
-        <td>${func}</td>
-        <td class="ele">${param}</td>
-        <td class="${result ? 'yes' : 'no'}">${result}</td>
-      </tr>` + log.innerHTML
+  function update(name, func, exp, result) {
+    const row = document.querySelector(`[name="log"] .${name}`)
+    // console.log(`${func}(${exp ? `"${exp}"` : ''}) \t=>\t${result}`)
+    row.innerHTML = `
+      <td>${func}</td>
+      <td class="${typeClass(exp)}">${exp ? he.encode(exp) : 'null'}</td>
+      <td class="${typeClass(result)}">${result}</td>
+    `
+  }
+
+  function typeClass(type) {
+    let className = typeof type
+    if (type === null) className = 'null'
+    if (typeof type === 'boolean') className = type
+    return 'typeof ' + className
   }
 }

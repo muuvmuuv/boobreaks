@@ -1,11 +1,2 @@
-/*!
- * Boobreaks v3.3.0
- * https://github.com/muuvmuuv/boobreaks
- *
- * Copyright 2019 Marvin Heilemann
- * Released under the MIT license
- *
- * Date: 08.05.2019
- */
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):(e=e||self).Boobreaks=t()}(this,function(){"use strict";return class{constructor(e){this.vars=Object.assign({},{breakpoints:["xs","sm","md","lg","xl"],widths:[null,576,768,992,1200]},e)}current(){const e=document.querySelector("body");if(!e)throw new Error("No `body` found!");return window.getComputedStyle(e,":before").getPropertyValue("content").replace(/"/g,"")||"unrecognized"}width(){return this.vars.widths[this.vars.breakpoints.indexOf(this.current().toLowerCase())]}is(e){return this.isAnExpression(e)?this.isMatchingExpression(e)||!1:this.current()===e}isAnExpression(e){return"<"===e.charAt(0)||">"===e.charAt(0)}splitExpression(e){const t=e.charAt(0),r="="===e.charAt(1),s=1+(r?1:0);return{operator:t,orEqual:r,breakpointName:e.slice(s)}}isMatchingExpression(e){const t=this.splitExpression(e),r=this.vars.breakpoints;let s=r.indexOf(t.breakpointName);if(-1!==s){let e=0,o=0;return"<"===t.operator&&(e=0,o=t.orEqual?++s:s),">"===t.operator&&(e=t.orEqual?s:++s,o=void 0),r.slice(e,o).includes(this.current())}}}});
+var r={breakpoints:["xs","sm","md","lg","xl"],widths:[0,576,768,992,1200]};function e(){var r=document.querySelector("body");return window.getComputedStyle(r,":before").getPropertyValue("content").replace(/"/g,"")||void 0}exports.vars=r,exports.current=e,exports.is=function(t){return function(r){return"<"===r.charAt(0)||">"===r.charAt(0)}(t)?function(t){var o=e();if(o){var n=function(r){var e=r.charAt(0),t="="===r.charAt(1);return{operator:e,orEqual:t,breakpointName:r.slice(1+(t?1:0))}}(t),a=r.breakpoints.indexOf(n.breakpointName);if(-1!=a){var i=0,u=void 0;"<"===n.operator&&(u=n.orEqual?++a:a),">"===n.operator&&(i=n.orEqual?a:++a);var c=r.breakpoints.slice(i,u);return 0===c.length&&n.breakpointName===e()||c.includes(o)}}}(t):e()===t},exports.width=function(){var t=e();if(t)return r.widths[r.breakpoints.indexOf(t.toLowerCase())]};
 //# sourceMappingURL=boobreaks.js.map

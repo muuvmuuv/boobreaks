@@ -1,6 +1,6 @@
 {
   "name": "boobreaks",
-  "version": "3.3.0",
+  "version": "4.0.0",
   "description": "Use Bootstraps breakpoints inside your JavaScript!",
   "keywords": [
     "bootstrap",
@@ -16,44 +16,33 @@
     "email": "marvin.heilemann+github@googlemail.com",
     "url": "https://marvin.digital/"
   },
-  "main": "dist/boobreaks.common.js",
-  "module": "dist/boobreaks.esm.js",
+  "source": "src/index.ts",
+  "main": "dist/boobreaks.js",
+  "umd:main": "dist/boobreaks.umd.js",
+  "module": "dist/boobreaks.mjs",
+  "types": "dist/boobreaks.d.ts",
+  "unpkg": "dist/boobreaks.umd.js",
   "scripts": {
-    "build": "rollup -cm",
-    "open": "open docs/index.html",
-    "prepublishOnly": "npm run build",
-    "pretty": "pretty-quick",
-    "start": "rollup -cmw"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
+    "start": "npm run watch",
+    "build": "microbundle --name Boobreaks",
+    "watch": "microbundle watch --name Boobreaks",
+    "build-docs": "microbundle -f umd -o docs --name Boobreaks",
+    "watch-docs": "microbundle watch -f umd -o docs --name Boobreaks",
+    "serve": "serve docs"
   },
   "dependencies": {
-    "bootstrap": "^4.3.1",
-    "jquery": "^3.3.1",
-    "popper.js": "^1.14.7"
+    "bootstrap": "^4.3.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "@types/node": "^11.13.10",
-    "change-case": "^3.1.0",
-    "create-banner": "^1.0.0",
-    "husky": "^2.2.0",
-    "moment": "^2.24.0",
-    "prettier": "^1.17.0",
-    "pretty-quick": "^1.10.0",
-    "rimraf": "^2.6.3",
-    "rollup": "^1.11.3",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-scss": "^1.0.1",
-    "rollup-plugin-terser": "^4.0.4",
-    "rollup-plugin-typescript": "^1.0.1",
-    "rollup-watch": "^4.3.1",
-    "sass": "^1.20.1",
-    "tslib": "^1.9.3",
-    "typescript": "^3.4.5"
+    "@typescript-eslint/eslint-plugin": "^2.6.0",
+    "@typescript-eslint/parser": "^2.6.0",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "microbundle": "^0.11.0",
+    "node-sass": "^4.13.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "serve": "^11.2.0"
   }
 }

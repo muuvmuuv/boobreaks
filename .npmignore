@@ -1,8 +1,10 @@
-.nvmrc
-.babelrc
-.prettierrc
-.prettierignore
-rollup.config.js
-tsconfig.json
-tslint.json
 docs/
+.rts*
+.eslintignore
+.eslintrc
+.gitignore
+.npmignore
+.nvmrc
+.prettierignore
+.prettierrc
+tsconfig.json

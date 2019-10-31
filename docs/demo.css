@@ -1,42 +1,83 @@
-body {
-  padding: 50px 15px;
-  font-family: 'Playfair Display', serif;
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --font-serif: 'Playfair Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+  --font-emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+
+  --text-xxs: 0.5rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.45rem;
+  --text-xxl: 2rem;
+
+  --spacing-xxs: 0.25rem;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+
+  --color-primary: #563d7c;
+  --color-primary-light: #9071be;
+  --color-primary-dark: #43335a;
+
+  --color-light: #f7f2fd;
+  --color-dark: #43335a;
+
+  --color-orange: #edb349;
+  --color-red: #f34b3b;
+  --color-blue: #3d57e7;
+  --color-green: #63c04e;
 }
 
-.emoji {
-  font-family: Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+body {
+  padding: var(--spacing-xxl) var(--spacing-lg);
+  background: var(--color-light);
 }
 
 header {
-  margin-bottom: 70px;
+  text-align: center;
+  margin-bottom: var(--spacing-xxl);
 }
 
 header h1 {
-  text-align: center;
-  color: #55417a;
+  font-family: var(--font-serif);
+  color: var(--color-primary);
 }
 
 header .badges img {
-  margin: 0 5px;
-}
-
-.log {
-  margin-top: 10px;
+  margin: 0 var(--spacing-xxs);
   user-select: none;
 }
 
-.log td {
-  padding-right: 40px;
+section[name='log'] table {
+  font-family: var(--font-mono);
+  user-select: none;
 }
 
-.log td.yes {
-  color: green;
+.typeof.true {
+  color: var(--color-green);
 }
 
-.log td.no {
-  color: red;
+.typeof.false {
+  color: var(--color-red);
 }
 
-.log td.ele {
-  color: orange;
+.typeof.null {
+  color: var(--color-orange);
+}
+
+.typeof.string {
+  color: var(--color-primary-light);
+}
+
+.typeof.number {
+  color: var(--color-blue);
 }
